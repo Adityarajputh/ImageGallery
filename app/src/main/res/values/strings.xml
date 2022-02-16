@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">ImageGallery</string>
+
+    <string name="selected_image">Selected Image</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="channel_name">Notification Channel</string>
+    <string name="channel_description">Test Notification Content Text</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="notification">Notification</string>
+    <string name="bottom_sheets">BottomSheets</string>
+    <string name="pop_ups">Pop Ups</string>
+    <string name="components">Components</string>
+    <string name="test_text">test text</string>
+    <string name="viewpager">ViewPager</string>
+    <string name="api_content">ApiContent</string>
+    <string name="search">search</string>
+    <string name="send_notification">Send Notification</string>
+    <string name="user_action">User Action</string>
+    <string name="get_bottom_sheet">Get BottomSheet</string>
+    <string name="enter_message">Enter Message</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_pop_up">get Pop Up</string>
+    <string name="enter_message2">Enter Message</string>
+    <string name="test_text2">Test Text</string>
+    <string name="image">image</string>
+</resources>
