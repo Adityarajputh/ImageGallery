@@ -10,9 +10,13 @@ import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.imagegallery.MainActivity
@@ -37,13 +41,26 @@ class NotificationFragment : Fragment() {
         return binding.root
     }
 
+
+
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.backIcon.setOnClickListener {
-            communicator = activity as Communicator
-            communicator.callHome()
+        super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as AppCompatActivity)
+            .supportActionBar?.show()
 
-        }
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                communicator = activity as Communicator
+                communicator.callHome()
+                (requireActivity() as AppCompatActivity)
+                    .supportActionBar?.hide()
+            }
+        })
+
+
+
 
         binding.notificationBtn.setOnClickListener {
             getNotification()
@@ -96,5 +113,6 @@ class NotificationFragment : Fragment() {
             notificationManager.createNotificationChannel(channel)
         }
     }
+
 
 }

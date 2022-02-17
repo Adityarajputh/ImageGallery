@@ -27,4 +27,8 @@
     <string name="test_text2">Test Text</string>
     <string name="image">image</string>
     <string name="recyclerview">RecyclerView</string>
+    <string name="view_pager">View Pager</string>
+    <string name="child_fragment_two">Child Fragment Two</string>
+    <string name="child_fragment_three">child Fragment Three</string>
+    <string name="child_fragment_one">Child Fragment One</string>
 </resources>

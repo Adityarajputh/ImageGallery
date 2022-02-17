@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.imagegallery.R
 import com.example.imagegallery.data.RecyclerItem
 import com.example.imagegallery.databinding.RecyclerItemBinding
 import com.example.imagegallery.utils.recyclerItemList
-import com.squareup.picasso.Picasso
 
-class RecyclerAdapter(val itemList : ArrayList<RecyclerItem>,val context : Context) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+
+class RecyclerAdapter(val context : Context) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+
 
 
     inner class ViewHolder(val itemBinding: RecyclerItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
@@ -32,11 +32,11 @@ class RecyclerAdapter(val itemList : ArrayList<RecyclerItem>,val context : Conte
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val items = itemList[position]
+        val items = recyclerItemList.recyclerList[position]
         holder.bindItem(items)
     }
 
     override fun getItemCount(): Int {
-        return  itemList.size
+        return  recyclerItemList.recyclerList.size
     }
 }

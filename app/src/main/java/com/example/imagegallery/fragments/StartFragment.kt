@@ -99,6 +99,8 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        Picasso.get().load(R.drawable.photo3).into(mbinding.headerLogo)
+
+
         binding.triggerBtn.setOnClickListener {
             permissionGranted()
         }
@@ -158,6 +160,7 @@ class StartFragment : Fragment() {
                 R.id.notificationItem -> communicator.callNotification()
                 R.id.bottomSheetItem -> communicator.callBottomSheet()
                 R.id.popUpItem -> communicator.callPopUp()
+                R.id.viewPager -> communicator.callViewPager()
                 R.id.RecyclerView -> communicator.callRecycler()
             }
             true

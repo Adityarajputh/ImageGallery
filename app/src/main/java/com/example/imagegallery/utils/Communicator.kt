@@ -6,4 +6,5 @@ interface Communicator {
     fun callBottomSheet()
     fun callPopUp()
     fun callRecycler()
+    fun callViewPager()
 }

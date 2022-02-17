@@ -16,15 +16,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
                 <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbarBottomSheet"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:layout_editor_absoluteX="-59dp"
-                    tools:layout_editor_absoluteY="0dp">
+                    app:titleTextColor="@color/white"
+                    >
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/backIcon"
@@ -45,7 +42,7 @@
                         android:src="@drawable/ic_baseline_menu_24" />
 
                 </com.google.android.material.appbar.MaterialToolbar>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </com.google.android.material.appbar.AppBarLayout>
 
 

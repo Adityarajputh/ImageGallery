@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imagegallery.R
@@ -28,10 +30,12 @@ class LoadImageFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoadImageBinding.inflate(layoutInflater)
 
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
+
         layoutManager = LinearLayoutManager(requireActivity())
         binding.recyclerList.layoutManager = layoutManager
 
-        adapter = RecyclerAdapter(recyclerItemList.recyclerList,requireActivity())
+        adapter = RecyclerAdapter(requireActivity())
         binding.recyclerList.adapter = adapter
 
         return binding.root
@@ -42,6 +46,16 @@ class LoadImageFragment : Fragment() {
             communicator = activity as Communicator
             communicator.callHome()
         }
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                communicator = activity as Communicator
+                communicator.callHome()
+                (requireActivity() as AppCompatActivity)
+                    .supportActionBar?.hide()
+            }
+        })
+
     }
 
 }
