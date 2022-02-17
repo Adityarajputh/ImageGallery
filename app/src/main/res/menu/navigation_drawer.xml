@@ -17,6 +17,12 @@
             android:id="@+id/popUpItem"
             android:icon="@drawable/ic_baseline_window_24"
             android:title="@string/pop_ups" />
+
+        <item
+            android:id="@+id/RecyclerView"
+            android:icon="@drawable/ic_baseline_recycling_24"
+            android:title="@string/recyclerview"
+            />
     </group>
 
     <group
@@ -25,6 +31,7 @@
             android:id="@+id/item4"
             android:title="@string/api_content">
             <menu>
+
                 <item
                     android:id="@+id/viewPager"
                     android:icon="@drawable/ic_baseline_table_chart_24"

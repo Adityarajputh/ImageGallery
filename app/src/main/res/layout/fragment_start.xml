@@ -136,7 +136,7 @@
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         android:fitsSystemWindows="true"
-        android:background="@color/purple_200"
+        android:background="@color/primary"
         app:headerLayout="@layout/navigation_drawer_header"
         app:menu="@menu/navigation_drawer" />
 

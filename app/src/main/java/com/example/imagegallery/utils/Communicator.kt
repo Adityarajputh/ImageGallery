@@ -5,4 +5,5 @@ interface Communicator {
     fun callHome()
     fun callBottomSheet()
     fun callPopUp()
+    fun callRecycler()
 }

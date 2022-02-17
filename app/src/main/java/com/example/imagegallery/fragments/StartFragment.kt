@@ -103,11 +103,12 @@ class StartFragment : Fragment() {
             permissionGranted()
         }
 
-        val imageUrl = "https://www.whatspaper.com/wp-content/uploads/2021/12/itachi-wallpaper-whatspaper-12.jpg"
-
 //        Picasso.get().load(imageUrl).into(binding.imageDisplay)
 
-        Glide.with(requireActivity()).load(imageUrl).into(binding.imageDisplay)
+        Glide.with(requireActivity())
+            .asGif()
+            .load(R.raw.itachi)
+            .into(binding.imageDisplay)
 
         binding.nextBtn.setOnClickListener {
 
@@ -126,7 +127,6 @@ class StartFragment : Fragment() {
                         TODO("Not yet implemented")
                     }
                 })
-
             }
         }
 
@@ -158,6 +158,7 @@ class StartFragment : Fragment() {
                 R.id.notificationItem -> communicator.callNotification()
                 R.id.bottomSheetItem -> communicator.callBottomSheet()
                 R.id.popUpItem -> communicator.callPopUp()
+                R.id.RecyclerView -> communicator.callRecycler()
             }
             true
         }

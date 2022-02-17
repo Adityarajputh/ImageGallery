@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/logoRecycler"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:cardCornerRadius="50dp"
+        android:padding="10dp"
+        app:cardElevation="5dp"
+        android:outlineSpotShadowColor="@android:color/primary_text_light"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:targetApi="p">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/recyclerImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@drawable/photo3"
+
+            />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toEndOf="@+id/logoRecycler"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/recyclerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Test text"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/recyclerText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Test text"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="#bdbdbd"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@
         <entry key="..\:/applications/ImageGallery/app/src/main/res/drawable/ic_baseline_perm_media.xml" value="0.1175" />
         <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/activity_main.xml" value="0.24114583333333334" />
         <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.21614583333333334" />
+        <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/fragment_load_image.xml" value="0.24114583333333334" />
         <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/fragment_notification.xml" value="0.21614583333333334" />
         <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/fragment_pop_up.xml" value="0.24114583333333334" />
         <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/fragment_start.xml" value="0.24114583333333334" />
@@ -16,6 +17,7 @@
         <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/navigation_drawer_header.xml" value="0.24114583333333334" />
         <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/pop_up_item.xml" value="0.24114583333333334" />
         <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/pop_up_window.xml" value="0.24114583333333334" />
+        <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/recycler_item.xml" value="0.7019867549668874" />
         <entry key="..\:/applications/ImageGallery/app/src/main/res/layout/sheet_item.xml" value="0.21614583333333334" />
         <entry key="..\:/applications/ImageGallery/app/src/main/res/menu/navigation_drawer.xml" value="0.18181818181818182" />
       </map>

@@ -3,10 +3,7 @@ package com.example.imagegallery
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.imagegallery.databinding.ActivityMainBinding
-import com.example.imagegallery.fragments.BottomSheetFragment
-import com.example.imagegallery.fragments.NotificationFragment
-import com.example.imagegallery.fragments.PopUpFragment
-import com.example.imagegallery.fragments.StartFragment
+import com.example.imagegallery.fragments.*
 import com.example.imagegallery.utils.Communicator
 
 class MainActivity : AppCompatActivity(), Communicator {
@@ -43,4 +40,11 @@ class MainActivity : AppCompatActivity(), Communicator {
             .replace(R.id.appContainer, PopUpFragment())
             .commit()
     }
+
+    override fun callRecycler() {
+        this.supportFragmentManager.beginTransaction()
+            .replace(R.id.appContainer,LoadImageFragment())
+            .commit()
+    }
+
 }
