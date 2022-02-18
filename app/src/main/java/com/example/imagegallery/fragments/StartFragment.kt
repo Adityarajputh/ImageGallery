@@ -2,30 +2,41 @@ package com.example.imagegallery.fragments
 
 
 import android.Manifest
+import android.content.ContentValues
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.activity.result.launch
+
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.example.imagegallery.MainActivity
 import com.example.imagegallery.R
 import com.example.imagegallery.databinding.FragmentStartBinding
 import com.example.imagegallery.databinding.NavigationDrawerHeaderBinding
 import com.example.imagegallery.utils.Communicator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import java.lang.Exception
+import kotlinx.coroutines.launch
+import java.io.File
+import java.io.IOException
 
 
 class StartFragment : Fragment() {
@@ -33,34 +44,21 @@ class StartFragment : Fragment() {
     private var imageUri: List<Uri>? = null
     private var position = 0
     private lateinit var getResult: ActivityResultLauncher<String>
-    private lateinit var getPermission: ActivityResultLauncher<String>
 
+
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = FragmentStartBinding.inflate(layoutInflater)
 
-        getPermission = registerForActivityResult(
-            ActivityResultContracts.RequestPermission(),
-            ActivityResultCallback {
-                if (it.toString() == true.toString()) {
-                    permissionGranted()
-                } else {
-                    Toast.makeText(requireActivity(),
-                        "Media Permission Not Granted",
-                        Toast.LENGTH_SHORT).show()
-                }
-            })
-
         getResult =
             registerForActivityResult(
                 ActivityResultContracts.GetMultipleContents(),
                 ActivityResultCallback {
-
                     imageUri = it
 
                     Log.d("uri's", imageUri.toString())
-
 
                     val count: Int? = imageUri?.size
                     if (count != null) {
@@ -94,6 +92,14 @@ class StartFragment : Fragment() {
         binding = FragmentStartBinding.inflate(layoutInflater, container, false)
 //        binding.imgSw.setFactory { ImageView(requireActivity().applicationContext) }
 
+        binding.triggerBtn.setOnClickListener {
+            getResult.launch("image/*")
+        }
+
+        binding.videoTrigger.setOnClickListener {
+
+        }
+
         return binding.root
     }
 
@@ -101,9 +107,14 @@ class StartFragment : Fragment() {
 //        Picasso.get().load(R.drawable.photo3).into(mbinding.headerLogo)
 
 
-        binding.triggerBtn.setOnClickListener {
-            permissionGranted()
-        }
+//        Log.d("Path",uri.toString())
+
+
+//        binding.triggerBtn.setOnClickListener {
+//            requestPermission()
+//        }
+
+
 
 //        Picasso.get().load(imageUrl).into(binding.imageDisplay)
 
@@ -120,15 +131,15 @@ class StartFragment : Fragment() {
                 Picasso.get().load(imageUri!![position])
                     .fit()
                     .centerCrop()
-                    .into(binding.imageDisplay,object : Callback {
-                    override fun onSuccess() {
-                        binding.progressBar.isVisible = false
-                    }
+                    .into(binding.imageDisplay, object : Callback {
+                        override fun onSuccess() {
+                            binding.progressBar.isVisible = false
+                        }
 
-                    override fun onError(e: Exception?) {
-                        TODO("Not yet implemented")
-                    }
-                })
+                        override fun onError(e: Exception?) {
+                            TODO("Not yet implemented")
+                        }
+                    })
             }
         }
 
@@ -138,7 +149,7 @@ class StartFragment : Fragment() {
                 Picasso.get().load(imageUri!![position])
                     .fit()
                     .centerCrop()
-                    .into(binding.imageDisplay,object : Callback {
+                    .into(binding.imageDisplay, object : Callback {
                         override fun onSuccess() {
                             binding.progressBar.isVisible = false
                         }
@@ -162,25 +173,18 @@ class StartFragment : Fragment() {
                 R.id.popUpItem -> communicator.callPopUp()
                 R.id.viewPager -> communicator.callViewPager()
                 R.id.RecyclerView -> communicator.callRecycler()
+                R.id.SavePhoto -> communicator.savePhoto()
             }
             true
         }
     }
 
 
-    fun permissionGranted() {
-        if (ActivityCompat.checkSelfPermission(requireActivity(),
-                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
-        ) {
-//                  val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            getResult.launch("image/*")
-
-        } else {
-            getPermission.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
-        }
 
 
-    }
+
+
+
 }
 
 
@@ -192,3 +196,45 @@ class StartFragment : Fragment() {
 //        }
 //    }
 
+
+
+
+//fun getCameraPermission() {
+//    val path = context?.filesDir?.absolutePath
+//    Log.d("path",path.toString())
+////
+////        val file = File("$path/Images")
+////        Log.d("file", file.toString())
+//
+//    val file = kotlin.io.path.createTempFile()
+//
+//
+//
+//    if (ActivityCompat.checkSelfPermission(requireActivity(),
+//            Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+//    ) {
+//        val uri = FileProvider.getUriForFile(requireActivity(),
+//            "com.example.imagegallery.fileprovider",createImageFile())
+//        Log.d("uri", uri.toString())
+//        storeVideo.launch(uri)
+//
+//    } else {
+//        getCameraPermission.launch(Manifest.permission.CAMERA)
+//    }
+//}
+
+
+//@Throws(IOException::class)
+//private fun createImageFile(): File {
+//    // Create an image file name
+//
+//    val storageDir: File? = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+//    return File.createTempFile(
+//        "JPEG_TEMP_", /* prefix */
+//        ".jpg", /* suffix */
+//        storageDir /* directory */
+//    ).apply {
+//        // Save a file: path for use with ACTION_VIEW intents
+//        capturedPhotoPath = absolutePath
+//    }
+//}

@@ -23,6 +23,11 @@
             android:icon="@drawable/ic_baseline_recycling_24"
             android:title="@string/recyclerview"
             />
+        <item
+            android:id="@+id/SavePhoto"
+            android:icon="@drawable/ic_baseline_camera_alt_24"
+            android:title="@string/save_photo"
+            />
     </group>
 
     <group

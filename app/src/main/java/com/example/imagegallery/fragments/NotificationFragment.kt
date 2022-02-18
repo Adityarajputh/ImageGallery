@@ -42,8 +42,6 @@ class NotificationFragment : Fragment() {
     }
 
 
-
-
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,9 +56,6 @@ class NotificationFragment : Fragment() {
                     .supportActionBar?.hide()
             }
         })
-
-
-
 
         binding.notificationBtn.setOnClickListener {
             getNotification()

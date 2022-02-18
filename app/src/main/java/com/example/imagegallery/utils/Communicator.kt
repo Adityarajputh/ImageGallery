@@ -7,4 +7,5 @@ interface Communicator {
     fun callPopUp()
     fun callRecycler()
     fun callViewPager()
+    fun savePhoto()
 }

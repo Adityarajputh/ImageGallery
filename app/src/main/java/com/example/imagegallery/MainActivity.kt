@@ -1,13 +1,30 @@
 package com.example.imagegallery
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.content.ContentValues
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.launch
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.example.imagegallery.databinding.ActivityMainBinding
 import com.example.imagegallery.fragments.*
 import com.example.imagegallery.utils.Communicator
+import kotlinx.coroutines.launch
+import java.io.IOException
 
 class MainActivity : AppCompatActivity(), Communicator {
     private lateinit var binding : ActivityMainBinding
@@ -15,11 +32,15 @@ class MainActivity : AppCompatActivity(), Communicator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val toolbar = findViewById<View>(R.id.actionBar) as Toolbar
         setSupportActionBar(toolbar)
+
         this.supportActionBar?.hide()
+
         this.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         this.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24)
 
@@ -30,6 +51,7 @@ class MainActivity : AppCompatActivity(), Communicator {
     }
 
     override fun callNotification() {
+
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer, NotificationFragment())
             .addToBackStack(null)
@@ -66,4 +88,15 @@ class MainActivity : AppCompatActivity(), Communicator {
             .commit()
     }
 
+    override fun savePhoto() {
+        this.supportFragmentManager.beginTransaction()
+            .replace(R.id.appContainer,SavePhotoFragment())
+            .commit()
+    }
+
+
 }
+
+
+//callPhoto()
+//binding.storeBtn.isVisible = false

@@ -42,6 +42,8 @@ class LoadImageFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
         binding.backIcon.setOnClickListener {
             communicator = activity as Communicator
             communicator.callHome()

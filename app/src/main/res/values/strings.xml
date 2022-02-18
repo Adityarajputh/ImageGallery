@@ -31,4 +31,8 @@
     <string name="child_fragment_two">Child Fragment Two</string>
     <string name="child_fragment_three">child Fragment Three</string>
     <string name="child_fragment_one">Child Fragment One</string>
+    <string name="capture_video">Capture Video</string>
+    <string name="store_img">Store Img</string>
+    <string name="call_fragment">call fragment</string>
+    <string name="save_photo">Save Photo</string>
 </resources>
