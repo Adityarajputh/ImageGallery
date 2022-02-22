@@ -92,7 +92,6 @@ class MainActivity : AppCompatActivity(), Communicator {
     override fun callViewPager() {
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer,ViewPagerFragment())
-            .addToBackStack(null)
             .commit()
     }
 

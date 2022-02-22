@@ -49,8 +49,9 @@ class ViewPagerChildTwo : Fragment() {
         adapter?.setOnItemClickListener(object : ListAdapter.onItemClickListener{
 
             override fun onItemClick(category: String) {
-                viewModel.categoryJoke(category)
                 val builder = AlertDialog.Builder(activity)
+
+                viewModel.categoryJoke(category)
 
                 viewModel.categoryJokeData.observe(viewLifecycleOwner, Observer{
 
@@ -62,21 +63,21 @@ class ViewPagerChildTwo : Fragment() {
                             dialog?.dismiss()
                         }
                     })
+                    builder.setCancelable(true)
                     builder.setMessage(message.toString())
 
                     val alertDialog : AlertDialog = builder.create()
                     alertDialog.show()
-                    
+
                 })
 
             }
         })
 
-
         viewModel.categoryData.observe(viewLifecycleOwner, Observer {
 
             adapter?.setCategoryList(it)
-            binding?.categoryRecyclerView?.adapter = adapter
+            binding.categoryRecyclerView.adapter = adapter
             Log.d("response", it.size.toString())
         })
 
