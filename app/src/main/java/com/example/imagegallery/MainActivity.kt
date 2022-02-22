@@ -47,11 +47,14 @@ class MainActivity : AppCompatActivity(), Communicator {
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer, StartFragment())
             .commit()
+    }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     override fun callNotification() {
-
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer, NotificationFragment())
             .addToBackStack(null)
@@ -61,36 +64,42 @@ class MainActivity : AppCompatActivity(), Communicator {
     override fun callHome() {
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer, StartFragment())
+            .addToBackStack(null)
             .commit()
     }
 
     override fun callBottomSheet() {
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer, BottomSheetFragment())
+            .addToBackStack(null)
             .commit()
     }
 
     override fun callPopUp() {
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer, PopUpFragment())
+            .addToBackStack(null)
             .commit()
     }
 
     override fun callRecycler() {
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer,LoadImageFragment())
+            .addToBackStack(null)
             .commit()
     }
 
     override fun callViewPager() {
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer,ViewPagerFragment())
+            .addToBackStack(null)
             .commit()
     }
 
     override fun savePhoto() {
         this.supportFragmentManager.beginTransaction()
             .replace(R.id.appContainer,SavePhotoFragment())
+            .addToBackStack(null)
             .commit()
     }
 

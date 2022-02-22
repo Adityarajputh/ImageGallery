@@ -4,14 +4,34 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <VideoView
+        android:id="@+id/videoPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/storeBtn2"
+        />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/storeBtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/call_fragment"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/save_video"
+        app:layout_constraintTop_toBottomOf="@id/videoPlayer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/storeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/store_actual_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeBtn2"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

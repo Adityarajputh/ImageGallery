@@ -19,18 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageGallery">
-        <provider
-            android:authorities="${applicationId}.fileprovider"
-            android:name="androidx.core.content.FileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true"
-            >
 
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-
-        </provider>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -44,3 +33,16 @@
     </application>
 
 </manifest>
+
+<!--<provider-->
+<!--android:authorities="${applicationId}.fileprovider"-->
+<!--android:name="androidx.core.content.FileProvider"-->
+<!--android:exported="false"-->
+<!--android:grantUriPermissions="true"-->
+<!--    >-->
+
+<!--<meta-data-->
+<!--    android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--    android:resource="@xml/file_paths" />-->
+
+<!--</provider>-->

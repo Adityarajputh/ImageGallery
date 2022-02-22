@@ -57,11 +57,15 @@ class NotificationFragment : Fragment() {
             }
         })
 
+
+
         binding.notificationBtn.setOnClickListener {
             getNotification()
             notificationId++
         }
     }
+
+
     @RequiresApi(Build.VERSION_CODES.M)
     fun getNotification(){
 

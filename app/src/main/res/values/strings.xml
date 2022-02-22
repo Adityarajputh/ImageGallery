@@ -35,4 +35,7 @@
     <string name="store_img">Store Img</string>
     <string name="call_fragment">call fragment</string>
     <string name="save_photo">Save Photo</string>
+    <string name="store_actual_image">Store Actual Image</string>
+    <string name="save_video">Save Video</string>
+    <string name="refresh_joke">Refresh Joke</string>
 </resources>
